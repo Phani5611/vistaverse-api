@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: app
+  datasource:
+    url: ${VV_DB_URL}
+    username: ${VV_DB_USERNAME}
+    password: ${VV_DB_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: validate
+      default_schema: vv_app
+    open-in-view: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+  sql:
+    init:
+      mode: never
+  liquibase:
+    enabled: ${VV_DB_MIGRATIONS_ENABLED:false}
+    default-schema: vv_app
+    change-log: classpath:db/changelog/db.changelog-master.yaml
